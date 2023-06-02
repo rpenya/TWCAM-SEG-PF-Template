@@ -1,0 +1,219 @@
+% arara: pdflatex: { shell: yes, interaction: nonstopmode }
+% arara: biber
+% arara: pdflatex: { shell: yes, interaction: nonstopmode }
+% arara: pdflatex: { shell: yes, interaction: nonstopmode }
+\documentclass{twcam-entregable}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{color}
+\usepackage{upquote}
+\usepackage{caption}
+\usepackage{soul}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+\usepackage[sorting=none,style=ieee]{biblatex}
+\addbibresource{references.bib}
+\usepackage{doi}
+\usepackage[toc,section=section,numberedsection,xindy,style=altlist,numberline,savewrites=true,acronym]{glossaries}
+\usepackage[newfloat]{minted}
+\setminted{autogobble,linenos,bgcolor=lightgray,fontsize=\scriptsize,frame=leftline,framesep=2mm,breaklines,breaksymbolleft=,numbersep=3pt,beameroverlays=true}
+
+\makeatletter
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+%\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\definecolor{orange}{rgb}{1,0.45,0.13}		
+\definecolor{olive}{rgb}{0.17,0.59,0.20}
+\definecolor{brown}{rgb}{0.69,0.31,0.31}
+\definecolor{purple}{rgb}{0.38,0.18,0.81}
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}
+\definecolor{lightred}{rgb}{1,0.4,0.5}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+
+\asignatura{Seguridad (44835)}
+
+\title{Proyecto Final}
+
+% Actualizar
+\author{Estudiante, \href{mailto:raul.penya@uv.es}{correo@alumni.uv.es}}
+
+\makeatletter
+\makeglossaries
+\loadglsentries{acronyms}
+\glsenableentrycount
+\makeatletter
+
+\begin{document}
+
+\def\listtablename{\'Indice de tablas}%
+\def\tablename{Tabla}% 
+
+\maketitle
+
+\tableofcontents
+
+%\newpage
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+\clearpage
+
+\section{Introducción}
+
+
+Ejemplo de plantilla para el trabajo final de la asignatura \href{https://www.uv.es/uvweb/master-tecnologias-web-computacion-nube-aplicaciones-moviles/es/programa-del-master/plan-estudios/plan-estudios-twcam-1286006061961.html?idA=44835&idT=2234;2023}{Seguridad (44835)} del \href{https://www.uv.es/twcam}{Máster oficial en \cgls{twcam}} de la \href{http://www.uv.es/etse}{\cgls{etse}},  \href{http://www.uv.es}{\cgls{uv}}.
+
+Acabamos de poner ejemplos de como introducir acrónimos en \LaTeX{}: \cgls{twcam}, \cgls{etse} y \cgls{uv}, que podemos ver definidos en el fichero {\tt acronyms.tex}.
+
+El resto de secciones se organizan como sigue.
+La sección \ref{sec:evaluacion} introduce bla, bla, bla ...
+
+
+\section{Evaluación de vulnerabilidades\label{sec:evaluacion}}
+
+Aquí tenemos un ejemplo de como citar página web \cite{Apache:website}, artículo \cite{Berners-Lee:IR-1992}, informe técnico \cite{Mell:NIST-SP-800-145}, conferencia \cite{Mowery:CCSW-2012}, libro \cite{SuarezSanchez-Ocana:Book-2012} o capítulo de libro \cite{Wen:LNICSSITE-2020}. 
+
+Además el fichero {\tt references.bib} contiene todas las referencias mencionadas en la asignatura hasta ahora.
+
+\section{Acciones correctivas\label{sec:correcciones}}
+
+El Listado \ref{lst:java} muestra un ejemplo de código {\tt Java}, mientras que el Listado \ref{lst:html} muestra un ejemplo de código {\tt HTML}.
+
+
+\begin{listing}[h!t!]
+\begin{minted}{java}
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    String id = req.getParameter("id");
+    if (id != null){
+        try{
+
+            // Business find the Author
+            Author p = factory.find(id);
+            
+            PrintWriter pw = resp.getWriter();
+            pw.println(g.toJson(p, Author.class));
+            pw.flush();
+            pw.close();
+        }catch(KeyNotFoundException ex){
+         sendError(resp,HttpServletResponse.SC_NOT_FOUND,id + " not found");
+        }
+    }else{
+        // Business method call
+        List<Author> pares = factory.findAll();
+
+        PrintWriter pw = resp.getWriter();
+        pw.println(g.toJson(pares));
+        pw.flush();
+        pw.close();
+    }
+}
+\end{minted}
+ \captionsetup{type=lstlisting}
+\caption{Ejemplo de código \mintinline{java}{doGet}}
+\label{lst:java}
+\end{listing}
+
+\begin{listing}[h!t!]
+\begin{minted}{html}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>WEB DE MUNDO NATURA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <header>
+        <h1>Los elefantes</h1>
+        <nav>
+            <a href="#otromami"> Otro mam&iacute;fero </a><br />
+            <a href="#otroanima"> Otro animal </a><br/>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Los elefantes del bosque</h2>
+        <article>
+            <h3>Introducci&oacute;n</h3>
+            <p>Los elefantes o elef&aacute;ntidos (Elephantidae) son una familia de mam&iacute;feros ...</p>
+        </article>
+        <article>
+            <h3>H&aacute;bitat</h3>
+            <p>Los elefantes viven en diferentes zonas del planeta ...</p>
+        </article>
+    </section>
+    <aside>
+        <p>Suscr&iacute;bete a nuestra revista mensual</p>
+    </aside>
+    <footer>
+        <p>&copy; Mundo Natura SL</p>
+    </footer>
+    
+</body>
+
+</html>
+\end{minted}
+ \captionsetup{type=lstlisting}
+\caption{Ejemplo de código {\tt HTML}}
+\label{lst:html}
+\end{listing}
+
+\newpage
+\section{Validación de la subsanación\label{sec:validacion}}
+
+La Figure \ref{fig:escudo} muestra el logo de la \gls{uv}, mientras que la Tabla \ref{tbl:ejemplo} muestra una tabla.
+
+\begin{figure}[h!t!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/ETSE}
+    \caption{Logo de la \glsentrylong{uv}}
+    \label{fig:escudo}
+\end{figure}
+
+\begin{table}[h!t!]
+    \centering
+    \begin{tabular}{c|c}
+        CABECERA 1 &  CABECERA 2\\
+         1 & 2 \\
+         3 & 4 \\
+    \end{tabular}
+    \caption{Ejemplo de tabla}
+    \label{tbl:ejemplo}
+\end{table}
+
+
+\section{Conclusiones\label{sec:conclusiones}}
+
+\clearpage
+
+\printbibliography[title={Bibliografía},heading=bibnumbered]
+
+\clearpage
+\appendix % Anexos
+\printglossary[type=\acronymtype,title={Acrónimos}]
+
+%\printglossary[type=main, title={Glosario de términos}]
+
+\clearpage
+
+\section{Otro anexo}
+
+\end{document}
