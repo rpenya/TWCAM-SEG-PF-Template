@@ -1,4 +1,3 @@
-= Plantilla para el trabajo final de la asignatura Seguridad del Máster oficial en Tecnologías Web, Computación en la Nube y Aplicaciones Móviles de la ETSE-UV
+= Plantilla Proyecto Final
 
-
-Ejemplo de plantilla para el trabajo final de la asignatura https://www.uv.es/uvweb/master-tecnologias-web-computacion-nube-aplicaciones-moviles/es/programa-del-master/plan-estudios/plan-estudios-twcam-1286006061961.html?idA=44835&idT=2234;2023[Seguridad (44835)] del https://www.uv.es/twcam[Máster oficial en Tecnologías Web, Computación en la Nube y Aplicaciones Móviles]de la http://www.uv.es/etse[ETSE-UV].
+Ejemplo de plantilla LaTeX para el proyecto final de la asignatura https://www.uv.es/uvweb/master-tecnologias-web-computacion-nube-aplicaciones-moviles/es/programa-del-master/plan-estudios/plan-estudios-twcam-1286006061961.html?idA=44835&idT=2234;2023[Seguridad (44835)] del https://www.uv.es/twcam[Máster oficial en Tecnologías Web, Computación en la Nube y Aplicaciones Móviles]de la http://www.uv.es/etse[ETSE-UV].
